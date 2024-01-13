@@ -14,6 +14,7 @@ module.exports = {
         primary: "#191919",
         secondary: "#F4F4F4",
         tertiary: "#272727",
+        quintary: "#171717",
         background: "#0A0A0A",
         textGray: "#A0A0A0",
         themeGreen: "#046367",
