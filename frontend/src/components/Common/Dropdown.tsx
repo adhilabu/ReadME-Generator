@@ -22,7 +22,6 @@ const Dropdown: React.FC<DropdownProps> = ({
     defaultValue || ""
   );
 
-  // Make a dropdown menu for the navbar
   return (
     <select
       className="bg-tertiary text-white px-4 py-3 w-full rounded-lg"
