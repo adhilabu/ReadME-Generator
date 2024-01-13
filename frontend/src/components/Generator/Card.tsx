@@ -11,35 +11,13 @@ import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { generateTagColor } from "../../utils/generateTagColor";
 
-interface CardProps {
-  title: string;
-  author: {
-    name: string;
-    url: string;
-  };
-  description: string;
-  tags: {
-    value: string;
-    label: string;
-  }[];
-  contributors: {
-    name: string;
-    url: string;
-    social: string;
-  }[];
-  imageURL: string;
-  isFeatured: boolean;
-  createdAt: string;
-  id: string;
-}
-
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<Template> = ({
   title,
   author,
   description,
   tags,
-  contributors,
   imageURL,
+  contributors,
   isFeatured,
   createdAt,
   id,
@@ -50,12 +28,11 @@ const Card: React.FC<CardProps> = ({
     <div className="w-[314px] h-[450px] shrink-0 rounded-[30px] bg-primary p-[25px] text-secondary">
       <ImageTitle
         title={title}
-        author={author}
         imageURL={imageURL}
         createdAt={createdAt}
         isFeatured={isFeatured}
       />
-      <Author author={author} />
+      {author && <Author author={author} />}
       <Description description={description} />
       <Tags tags={tags} />
       <Contributors contributors={contributors} />
@@ -79,17 +56,11 @@ const Card: React.FC<CardProps> = ({
 
 // Need to import star to signify featured
 import { AiFillStar } from "react-icons/ai";
+import { Template } from "../../api/generated";
 
-const ImageTitle: React.FC<{
-  imageURL: string;
-  title: string;
-  author: {
-    name: string;
-    url: string;
-  };
-  createdAt: string;
-  isFeatured: boolean;
-}> = ({ imageURL, title, createdAt, isFeatured }) => {
+const ImageTitle: React.FC<
+  Pick<Template, "imageURL" | "title" | "createdAt" | "isFeatured">
+> = ({ imageURL, title, createdAt, isFeatured }) => {
   return (
     <div className="flex gap-[25px]">
       <div>
@@ -121,12 +92,7 @@ const ImageTitle: React.FC<{
   );
 };
 
-const Author: React.FC<{
-  author: {
-    name: string;
-    url: string;
-  };
-}> = ({ author }) => {
+const Author: React.FC<Pick<Template, "author">> = ({ author }) => {
   return (
     <div className="flex items-center gap-[25px] mb-3">
       <h2 className="text-xs font-medium tracking-secondary mb-3 h-full">
