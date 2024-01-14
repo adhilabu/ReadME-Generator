@@ -5,10 +5,10 @@ import TemplateSelectorOption from "./TemplateSelectorOption";
 export interface TemplateSelectorProps {
   label: string;
 
-  options: TemplateSelectorOption[];
+  options: ITemplateSelectorOption[];
 }
 
-export interface TemplateSelectorOption {
+export interface ITemplateSelectorOption {
   value: string;
   label: string;
   description: string;
@@ -31,7 +31,7 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
       />
 
       {!isMinimised &&
-        options?.map((option: TemplateSelectorOption, index: number) => (
+        options?.map((option: ITemplateSelectorOption, index: number) => (
           <TemplateSelectorOption
             key={index}
             value={option.value}

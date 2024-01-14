@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { TemplateSelectorOption } from "./TemplateSelector";
+import { ITemplateSelectorOption } from "./TemplateSelector";
 
-const TemplateSelectorOption: React.FC<TemplateSelectorOption> = ({
+const TemplateSelectorOption: React.FC<ITemplateSelectorOption> = ({
   description,
   label,
   value,
