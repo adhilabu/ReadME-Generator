@@ -1,5 +1,7 @@
 import TabBar from "../Common/TabBar";
-import RawPreview from "./Tabs/Raw/RawPreview";
+import Block from "./Tabs/Edit/Block/Block";
+import Preview from "./Tabs/Preview/Preview";
+import RawEdit from "./Tabs/Raw/RawEdit";
 
 const textInput = `
 <br/>
@@ -146,17 +148,22 @@ const GeneratorMain = () => {
         tabs={[
           {
             label: "Edit",
-            component: <div>edit</div>,
+            component: (
+              <Block
+                title="Title & Description"
+                description="Lorem ipsum dolor est"
+              />
+            ),
           },
           {
             label: "Preview",
-            component: <div>preview</div>,
+            component: <Preview output={textInput} />,
           },
           {
             label: "Raw",
             component: (
-              <RawPreview
-                textInput={textInput}
+              <RawEdit
+                output={textInput}
                 onClick={(textInput) => {
                   alert(textInput);
                 }}

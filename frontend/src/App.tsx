@@ -6,6 +6,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Home from "./pages/Home";
 import GeneratorLayout from "./layouts/Generator";
 import SelectTemplate from "./pages/SelectTemplate";
+import GeneratorSidebar from "./components/Generator/GeneratorSidebar";
+import GeneratorMain from "./components/Generator/GeneratorMain";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +38,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/generator/:id",
-        element: <div>Template</div>,
+        element: (
+          <div className="w-full flex items-start justify-between">
+            <GeneratorSidebar />
+            <GeneratorMain />
+          </div>
+        ),
       },
     ],
   },
